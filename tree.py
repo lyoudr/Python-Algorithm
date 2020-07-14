@@ -7,6 +7,7 @@ class Node:
 class BinarySearchTree:
   def __init__(self):
     self.root = None
+    self.diff = {}
   def insert(self, key):
     node = Node(key)
     if self.root == None:
@@ -58,13 +59,21 @@ class BinarySearchTree:
       return node.key
   def searchNode(self, node, key):
     if key < node.key and node.left:
+      self.diff[node.key] = node.key - key
       self.searchNode(node.left, key)
     elif key > node.key and node.right:
+      self.diff[node.key] = key - node.key
       self.searchNode(node.right, key)
     elif key == node.key :
       print('found is => {}'.format(node.key))
     else :
-      print('Not found')
+      if key > node.key:
+        self.diff[node.key] = key - node.key
+      elif key < node.key:
+        self.diff[node.key] = node.key - key  
+      print('self.diff is =>', self.diff)
+      min_val = min(self.diff, key = self.diff.get)
+      print('closest value is =>', min_val)
   def remove(self, node, key):
     if key < node.key:
       node.left = self.remove(node.left, key)
@@ -109,9 +118,21 @@ tree.insert(25)
 # tree.inOrderTraverse(tree.root, printNode)
 # tree.preOrderTraverse(tree.root, printNode)
 # tree.postOrderTraverse(tree.root, printNode)
-tree.minNode(tree.root)
-tree.maxNode(tree.root)
-tree.searchNode(tree.root, 13)
+# tree.minNode(tree.root)
+# tree.maxNode(tree.root)
+# tree.searchNode(tree.root, 28)
 # tree.remove(tree.root, 14)
-tree.inOrderTraverse(tree.root, printNode)
     
+# Question Write a Python program to convert a given array elements to a height balanced Binary Search Tree (BST).
+array_nums = [1,2,3,4,5,6,7]
+
+def generate_Tree():
+  array_nums.sort()
+  mid = (len(array_nums) - 1) // 2
+  tree = BinarySearchTree()
+  tree.insert(array_nums.pop(mid))
+  for num in array_nums:
+    tree.insert(num)
+  tree.inOrderTraverse(tree.root, printNode)
+
+generate_Tree()
