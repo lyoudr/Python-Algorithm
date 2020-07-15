@@ -1,7 +1,9 @@
 ### I use Python to manipulate various datastructures and algorithms.
 
 # Stack
-Use LIFO to deal with stack
+(1) Use LIFO to deal with stack
+
+(2) Use Stack to manipulate decimal to binary
 
 # Queue
 (1) Use FIFO to deal with Queue
