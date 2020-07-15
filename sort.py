@@ -56,6 +56,7 @@ def insertionSort(array):
 
 insertionSort(list_a)
 
+# 4. Merge Sort
 def mergeSortRec(array):
   if len(array) > 1:
     mid = len(array) // 2
@@ -89,3 +90,40 @@ def mergeSortRec(array):
 
 nlist = [14,46,43,27,57,41,45,21,70]
 mergeSortRec(nlist)
+
+# 5. Quick Sort
+def quickSort(array, left, right):
+  if len(array) > 1:
+    
+    index = partition(array, left, right)
+    if left < index - 1:
+      quickSort(array, left, index - 1)
+    
+    if index < right :
+      quickSort(array, index, right)
+  print('array is =>', array) 
+
+
+def partition(array, left, right):
+  pivot = array[(left + right) // 2] # the value of mid point
+  i = left
+  j = right
+
+  while i <= j:
+    while array[i] < pivot:
+      i += 1
+    while array[j] > pivot:
+      j -= 1
+    if i <= j:
+      swapQuickSort(array, i, j)
+      i += 1
+      j -= 1
+  return i
+
+def swapQuickSort(array, index1, index2):
+  aux = array[index1]
+  array[index1] = array[index2]
+  array[index2] = aux
+
+xlist = [3, 5, 1, 6, 4, 7, 2]
+quickSort(xlist, 0, len(xlist) - 1)
