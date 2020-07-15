@@ -14,6 +14,13 @@ Use LIFO to deal with stack
 (2) Doubly linkded list 
 
 # Set 
+(1) Union
+
+(2) Intersection
+
+(3) Difference
+
+(4) Subset
 
 # HashTable
 (1) Dictionary
